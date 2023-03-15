@@ -6,13 +6,7 @@ import org.testng.annotations.Test;
 import MainPage.HomePage.HomePage;
 import test.TestBase;
 public class OwnersPageTest extends TestBase {
-	@Test
-	public static void FindAnOwnerTest() throws IOException{
-	   
-		System.out.println("Find an Owner");
-		OwnersPage.searchOwner();
 	
-	}
 	@Test
 	public static void addOwner() throws IOException{
 	   
@@ -20,4 +14,12 @@ public class OwnersPageTest extends TestBase {
 		OwnersPage.addOwner();
 	
 	}
+	@Test
+	public static void FindAnOwnerTest() throws IOException{
+	   
+		System.out.println("Find an Owner");
+		OwnersPage.searchOwner();
+	
+	}
+	
 }

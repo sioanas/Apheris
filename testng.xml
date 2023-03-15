@@ -6,6 +6,9 @@
     <test name="Apheris">
         <packages>
             <package name="MainPage.HomePage"/>
+            <package name="MainPage.Owners"/>
+            <package name="MainPage.Veterinarians"/>
+            <package name="MainPage.Error"/>
         </packages>
     </test>
 

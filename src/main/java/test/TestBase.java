@@ -17,8 +17,7 @@ public class TestBase {
 	public static WebDriver driver;
 
 	@BeforeSuite
-    public void setup() throws InterruptedException, IOException {
-			
+    public void setup() throws InterruptedException, IOException {		
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--remote-allow-origins=*");
 		driver = new ChromeDriver(options);
@@ -26,19 +25,15 @@ public class TestBase {
 	     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 	     new PageBase(driver);
 	     driver.navigate().to(Constants.getBaseUrl());
-		
     }
 	@BeforeTest
 	public void beforeTest() {
-		System.out.print("\n----------------------START-------------------------------");
+		System.out.print("\n----------------------START-------------------------------\n");
 	}
 	@AfterTest
 	public void afterTest() {
-		System.out.print("\n------------ ----------END----------------- --------------");
+		System.out.print("\n-----------------------END--------------------------------\n");
 	}
-	
-	
-	
     @AfterSuite
     public void CloseDriverInstance() throws IOException {
         if (driver != null) {
@@ -46,8 +41,5 @@ public class TestBase {
             driver.close();
             driver.quit();
         }
-
     }
-
-
 }

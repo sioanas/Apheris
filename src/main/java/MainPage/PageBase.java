@@ -35,7 +35,6 @@ public class PageBase {
 	                        wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(By.xpath(value)));
 	                    }
 	                    element = driver.findElement(By.xpath(value));
-	                  
 	                    return element;
 	                case "id":
 	                    if (waitFor) {

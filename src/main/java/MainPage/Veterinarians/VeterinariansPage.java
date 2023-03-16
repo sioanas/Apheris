@@ -15,19 +15,15 @@ public class VeterinariansPage extends PageBase{
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public static void checkVetTable() throws IOException {
 		
-		PageBase.elementOnPage("xpath",menuVeterinariansXPATH, true).click();
-		Assert.assertTrue(elementOnPage("xpath",vetTableHeaderXpath,true).getText().contains("Name")) ;
-		
-
+		PageBase.elementOnPage("xpath", menuVeterinariansXPATH, true).click();
+		Assert.assertTrue(elementOnPage("xpath", vetTableHeaderXpath,true).getText().contains("Name")) ;
 	}
-public static void checkVet() throws IOException {
+	public static void checkVet() throws IOException {
 		
-		PageBase.elementOnPage("xpath",menuVeterinariansXPATH, true).click();
-		Assert.assertTrue(elementOnPage("id",vetTableId,true).getText().contains(utilss.Constants.getVetName())) ;
-		
-
+		PageBase.elementOnPage("xpath", menuVeterinariansXPATH, true).click();
+		Assert.assertTrue(elementOnPage("id", vetTableId,true).getText().contains(utilss.Constants.getVetName())) ;
 	}
 }

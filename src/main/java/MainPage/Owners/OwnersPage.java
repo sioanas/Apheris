@@ -25,28 +25,23 @@ public class OwnersPage extends PageBase{
 	private static String addOwnerButtonXpath="//*[@id=\"add-owner-form\"]/div[2]/div/button";
 	
 	public static void searchOwner() throws IOException {
-		PageBase.elementOnPage("xpath",menuOwnersXPATH, true).click();
+		PageBase.elementOnPage("xpath", menuOwnersXPATH, true).click();
 		PageBase.elementOnPage("id", searchTextFieldID,true).sendKeys(utilss.Constants.lastName);
 		PageBase.elementOnPage("xpath", findOwnerXPATH,true).click();
-		Assert.assertTrue(elementOnPage("xpath",ownerNameResultXPATH,true).getText().contains(Constants.getOKOwner())) ;
-		
+		Assert.assertTrue(elementOnPage("xpath", ownerNameResultXPATH,true).getText().contains(Constants.getOKOwner())) ;
 	}
 	public static void addOwner() throws IOException {
-		PageBase.elementOnPage("xpath",menuOwnersXPATH, true).click();
-		PageBase.elementOnPage("xpath",addOwnerXPATH,true).click();
+		PageBase.elementOnPage("xpath", menuOwnersXPATH, true).click();
+		PageBase.elementOnPage("xpath", addOwnerXPATH,true).click();
 		
-		PageBase.elementOnPage("id",addOwnerFirstNameId,true).sendKeys(Constants.firstName);
-		PageBase.elementOnPage("id",addOwnerLastNameId,true).sendKeys(Constants.lastName);
-		PageBase.elementOnPage("id",addOwnerAddressId,true).sendKeys(Constants.address);
-		PageBase.elementOnPage("id",addOwnerCityId,true).sendKeys(Constants.city);
-		PageBase.elementOnPage("id",addOwnerTelephoneId,true).sendKeys(Constants.telephone);
+		PageBase.elementOnPage("id", addOwnerFirstNameId,true).sendKeys(Constants.firstName);
+		PageBase.elementOnPage("id", addOwnerLastNameId,true).sendKeys(Constants.lastName);
+		PageBase.elementOnPage("id", addOwnerAddressId,true).sendKeys(Constants.address);
+		PageBase.elementOnPage("id", addOwnerCityId,true).sendKeys(Constants.city);
+		PageBase.elementOnPage("id", addOwnerTelephoneId,true).sendKeys(Constants.telephone);
 		
-		PageBase.elementOnPage("xpath",addOwnerButtonXpath,true).click();
+		PageBase.elementOnPage("xpath", addOwnerButtonXpath,true).click();
 		
-			
-		Assert.assertTrue(elementOnPage("xpath",ownerNameResultXPATH,true).getText().contains(Constants.getOKOwner())) ;
-		
+		Assert.assertTrue(elementOnPage("xpath", ownerNameResultXPATH,true).getText().contains(Constants.getOKOwner())) ;	
 	}
-	
-
 }

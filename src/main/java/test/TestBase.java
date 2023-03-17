@@ -20,6 +20,7 @@ public class TestBase {
     public void setup() throws InterruptedException, IOException {		
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--remote-allow-origins=*");
+		System.setProperty("webdriver.chrome.driver","/home/Documents/ForJenkins/Apheris/chromedriver.exe");
 		driver = new ChromeDriver(options);
 	    driver.manage().window().maximize();
 	     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));

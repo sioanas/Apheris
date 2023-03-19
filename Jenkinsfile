@@ -9,17 +9,40 @@ pipeline {
         skipStagesAfterUnstable()
     }
     stages {
-        stage('Check') {
+        stage('Dev Linting and Formating Check') {
+            steps {
+                echo "This is linting step"
+            }
+        }
+
+        stage('Dev Unit Tests') {
+            steps {
+                echo "This is UT"
+            }
+        }
+
+        stage('QA Cleanup') {
             steps {
                 sh 'mvn -B -DskipTests clean package'
             }
         }
-        stage('Build') {
+	 stage('QA Linting and formating') {
             steps {
-                sh 'mvn -B -DskipTests clean package'
+                sh 'echo "mvn checkstyle:check"'
             }
         }
-        stage('Test') {
+
+        stage('QA Integration Test') {
+            steps {
+                echo "Integration tests"
+            }
+        }
+	  stage('QA Functional Test') {
+            steps {
+                echo "Functional tests"
+            }
+        }
+        stage('QA E2E Tests') {
             steps {
                 sh 'mvn test'
             }
@@ -28,10 +51,17 @@ pipeline {
                     junit 'target/surefire-reports/*.xml'
                 }
             }
-        }
-        stage('Deliver') { 
+
+        stage('QA Security Tests') {
             steps {
-                sh './jenkins/scripts/deliver.sh' 
+                echo "Security Tests"
+            }
+        }
+
+        }
+        stage('Deliver') {
+            steps {
+                sh './jenkins/scripts/deliver.sh'
             }
         }
     }

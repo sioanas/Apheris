@@ -51,6 +51,7 @@ pipeline {
                     junit 'target/surefire-reports/*.xml'
                 }
             }
+	}
 
         stage('QA Security Tests') {
             steps {
@@ -58,7 +59,7 @@ pipeline {
             }
         }
 
-        }
+    
         stage('Deliver') {
             steps {
                 sh './jenkins/scripts/deliver.sh'

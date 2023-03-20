@@ -90,12 +90,7 @@ pipeline {
                     steps {
                         echo "Test on Internet Explorer"
                     }
-			}
-	
 			
-		} 
-	}     
-         
     }
 }
 

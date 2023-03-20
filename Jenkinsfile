@@ -37,12 +37,22 @@
 					        stages {
 					          stage("Integration Tests") {
 					            steps {
-					              echo "Integration Tests"
+					              sh 'mvn test'
+					            }
+					            post {
+					                always {
+					                  junit 'target/surefire-reports/*.xml'  
+					                }
 					            }
 					          }
 					          stage("End to End Tests") {
 					            steps {
 					              echo "End to end Tests"
+					            }
+					          }
+					          stage("Security Tests") {
+					            steps {
+					              echo "Security Tests"
 					            }
 					          }
 					        }
@@ -59,6 +69,11 @@
 					              echo "End to End Tests"
 					            }
 					          }
+					          stage("Security Tests") {
+					            steps {
+					              echo "Security Tests"
+					            }
+					          }
 					        }
 					      }
 					      stage("Safari") {
@@ -71,6 +86,11 @@
 					          stage("End to End Tests") {
 					            steps {
 					              echo "End to End Tests"
+					            }
+					          }
+					          stage("Security Tests") {
+					            steps {
+					              echo "Security Tests"
 					            }
 					          }
 					        }

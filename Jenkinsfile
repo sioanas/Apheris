@@ -26,44 +26,78 @@ pipeline {
                 sh 'mvn -B -DskipTests clean package'
             }
         }
-	 stage('QA Linting and formating') {
+         stage('QA Linting and formating') {
             steps {
                 sh 'echo "mvn checkstyle:check"'
             }
         }
 
-        stage('QA Integration Test') {
-            steps {
-                echo "Integration tests"
-            }
-        }
-	  stage('QA Functional Test') {
-            steps {
-                echo "Functional tests"
-            }
-        }
-        stage('QA E2E Tests') {
-            steps {
-                sh 'mvn test'
-            }
-            post {
-                always {
-                    junit 'target/surefire-reports/*.xml'
-                }
-            }
-	}
 
-        stage('QA Security Tests') {
-            steps {
-                echo "Security Tests"
-            }
-        }
 
-    
-        stage('Deliver') {
-            steps {
-                sh './jenkins/scripts/deliver.sh'
-            }
-        }
+	stage('Run Test'){
+		parallel{
+		
+			stage('Chrome') {
+				 stage('QA Integration Test') {
+            			steps {
+                				echo "Integration tests"
+            				}
+        				}
+				}
+				stage('QA Integration Test') {
+           				 steps {
+                				echo "Integration tests"
+           					 }
+      				  }
+				}
+ 				stage('QA Functional Test') {
+  					 steps {
+                				echo "Functional tests"
+            				}
+       				 }
+				}
+        			stage('QA E2E Tests') {
+           				 steps {
+              				  sh 'mvn test'
+            				}
+           				 post {
+               				 always {
+                    			junit 'target/surefire-reports/*.xml'
+               				
+						 }
+            				}
+        			}
+
+        			stage('QA Security Tests') {
+            			steps {
+               				 echo "Security Tests"
+          					  }
+       			
+				 }
+
+
+        			stage('Deliver') {
+          				  steps {
+              				  sh './jenkins/scripts/deliver.sh'
+           					 }
+       			 }
+			}
+
+			stage('Internet Explorer') {
+			agent {
+                        label "IE"
+                    }
+                    steps {
+                        echo "Test on Internet Explorer"
+                    }
+			}
+	
+			
+		} 
+	}     
+         
     }
 }
+
+
+

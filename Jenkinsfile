@@ -1,4 +1,4 @@
-pipeline {
+	pipeline {
 	    agent {
 	        docker {
 	            image 'maven:3.9.0-eclipse-temurin-11'
@@ -33,51 +33,56 @@ pipeline {
 	        }
 	         stage('Run Test'){
 	        	parallel {
-					      stage("stream1") {
+					      stage("Chrome") {
 					        stages {
-					          stage("JUnit") {
+					          stage("Integration Tests") {
 					            steps {
-					              echo "Executing JUnit"
+					              echo "Integration Tests"
 					            }
 					          }
-					          stage("Firefox") {
+					          stage("End to End Tests") {
 					            steps {
-					              echo "Executing Firefox"
+					              echo "End to end Tests"
 					            }
 					          }
 					        }
 					      }
-					      stage("stream2") {
+					      stage("Internet Explorer") {
 					        stages {
-					          stage("DBUnit") {
+					          stage("Integration Tests") {
 					            steps {
-					              echo "Executing DBUnit"
+					              echo "Integration Tests"
 					            }
 					          }
-					          stage("Edge") {
+					          stage("End to End Tests") {
 					            steps {
-					              echo "Executing Edge"
+					              echo "End to End Tests"
 					            }
 					          }
 					        }
 					      }
-					      stage("stream3") {
+					      stage("Safari") {
 					        stages {
-					          stage("Jasmine") {
+					          stage("Integration Tests") {
 					            steps {
-					              echo "Executing Jasmine"
+					              echo "Integration Tests"
 					            }
 					          }
-					          stage("Safari") {
+					          stage("End to End Tests") {
 					            steps {
-					              echo "Executing Safari"
+					              echo "End to End Tests"
 					            }
 					          }
 					        }
 					      }
 					    }
 					  }
-					  stage("Dev") {
+					  stage("Deploy") {
+					    steps {
+					      echo "Executing Dev"
+					    }
+					  }
+					  stage("Smoke Test on Production") {
 					    steps {
 					      echo "Executing Dev"
 					    }

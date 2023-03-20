@@ -57,7 +57,7 @@
 					          }
 					        }
 					      }
-					      stage("Internet Explorer") {
+					      stage("IE") {
 					        stages {
 					          stage("Integration Tests") {
 					            steps {
